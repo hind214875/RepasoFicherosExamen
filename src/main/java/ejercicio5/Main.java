@@ -14,6 +14,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -34,6 +36,19 @@ public class Main {
             System.out.println(entry.getKey()+":"+entry.getValue());
             
         }
+        
+        List<Persona> lista=LeerCSvDate.leerFicheroCsvFecha("persona.csv");
+        lista.forEach(System.out::println);
+        //crear objeto typo comparator
+         Comparator<Persona> criterioNombre= ( l1, l2)->l1.getNombre().compareTo(l2.getNombre());
+         Comparator<Persona> criterioDate= ( l1, l2)->l1.getdate().compareTo(l2.getdate()); 
+         //comaparar con dos critirios
+         Comparator<Persona> critirioNombreDate=criterioNombre.thenComparing(criterioDate);
+         //ordenar con los dos critirios
+         Collections.sort(lista,critirioNombreDate);
+         lista.forEach(System.out::println);
+
+        
     }
 
     //crear una lista de persona para que puedo leerla

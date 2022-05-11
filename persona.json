@@ -1,13 +1,13 @@
 [ {
   "nombre" : "saida",
   "nota" : "7",
-  "hora" : [ 2022, 5, 11 ]
+  "date" : [ 2022, 5, 11 ]
 }, {
   "nombre" : "hind",
   "nota" : "7",
-  "hora" : [ 2022, 5, 11 ]
+  "date" : [ 2022, 5, 11 ]
 }, {
   "nombre" : "wiam",
   "nota" : "7",
-  "hora" : [ 2022, 5, 11 ]
+  "date" : [ 2022, 5, 11 ]
 } ]

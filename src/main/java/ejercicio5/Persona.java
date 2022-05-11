@@ -15,15 +15,15 @@ import java.time.LocalDate;
 public class Persona {
     private String nombre;
     private String nota;
-    private LocalDate hora;
+    private LocalDate date;
 
     public Persona() {
     }
 
-    public Persona(String nombre, String nota, LocalDate hora) {
+    public Persona(String nombre, String nota, LocalDate date) {
         this.nombre = nombre;
         this.nota = nota;
-        this.hora = hora;
+        this.date = date;
     }
 
     public String getNombre() {
@@ -42,17 +42,17 @@ public class Persona {
         this.nota = nota;
     }
 
-    public LocalDate getHora() {
-        return hora;
+    public LocalDate getdate() {
+        return date;
     }
 
-    public void setHora(LocalDate hora) {
-        this.hora = hora;
+    public void setdate(LocalDate date) {
+        this.date = date;
     }
 
     @Override
     public String toString() {
-        return nombre + ";" + nota + ";" + hora;
+        return nombre + ";" + nota + ";" + date;
     }
     
     
