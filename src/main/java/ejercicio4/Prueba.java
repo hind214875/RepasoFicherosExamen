@@ -6,7 +6,13 @@
 package ejercicio4;
 
 import ejercicio1.LecturaCSV;
-import java.util.Map;
+import ejercicio2.LecturaJSON;
+import ejercicio2.RegistroJSON;
+import ejercicio3.Alumnado;
+import ejercicio3.RegistrosToAlumnado;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.TreeMap;
 
 /**
  *
@@ -15,8 +21,12 @@ import java.util.Map;
 public class Prueba {
     public static void main(String[] args) {
         
-        Map<String,String> mapDesdeFichero=LecturaCSV.LecturaCSV("nombresModulos.csv", "./");
-            // AlumnadoToCSV.escritura(alumnado, mapDesdeFichero);
+        TreeMap<String,String> mapDesdeFichero=LecturaCSV.LecturaCSV("nombresModulos.csv", "./");
+        List<RegistroJSON> notas = LecturaJSON.LeerFicheroJson("calificacionesGrupo.json","./");
+        List<Alumnado> alumnos = RegistrosToAlumnado.registrosToAlumnados((ArrayList<RegistroJSON>) notas);
+        
+        Alumnado delia = alumnos.stream().filter(a -> a.getNombreAlumno().contains("Delia")).findFirst().get();
+        AlumnadoToCSV.alumnadoToCsv(delia, mapDesdeFichero);
       
    
       

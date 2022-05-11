@@ -47,7 +47,7 @@ public class Alumnado implements Comparable<Alumnado> {
     public String toString() {
         String moduloNota="";
         for (Map.Entry<String, String> entry : mapa.entrySet()) {
-               moduloNota="["+entry.getKey()+": "+entry.getValue()+"] ";
+               moduloNota+="["+entry.getKey()+": "+entry.getValue()+"] ";
         };
         
         return "["+nombreAlumno +"]"+ "\n"

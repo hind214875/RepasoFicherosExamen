@@ -29,6 +29,7 @@ public class RegistroJSON {
     private String fOL;
     @JsonProperty("CEAC")
     private String cEAC;
+   
 
     //constrector
     public RegistroJSON() {

@@ -8,12 +8,14 @@ package ejercicio4;
 import ejercicio3.Alumnado;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 import java.util.TreeMap;
 
 /**
@@ -21,14 +23,38 @@ import java.util.TreeMap;
  * @author hinda
  */
 public class AlumnadoToCSV {
-
-    public static void escritura(Alumnado alumnado, TreeMap<String, String> mapa) {
+    
+    public static void alumnadoToCsv(Alumnado alumno , TreeMap<String,String> datosEj1){
         crearDirectorio("./alumnado");
-        String nombreSinEspacio = alumnado.getNombreAlumno().replaceAll(" ", "");
-        nombreSinEspacio = nombreSinEspacio.replaceAll(",", "-");
+        String nombreSinEspacio = alumno.getNombreAlumno().replaceAll(" ","");
+        nombreSinEspacio=nombreSinEspacio.replaceAll(",","-");
 
-      
+        Map<String,String> notasAlumno = new TreeMap<>();
+        
+        for(Map.Entry<String,String> entry : datosEj1.entrySet()){
+            for(Map.Entry<String,String> entryAlumno : alumno.getMapa().entrySet()){
+                if(entry.getKey().equals(entryAlumno.getKey())){
+                    notasAlumno.put(entry.getValue(),entryAlumno.getValue());
+                }
+            }
+        }
+
+        escribirCsv("./alumnado/"+nombreSinEspacio+".csv",notasAlumno);
     }
+    
+    private static <T> void escribirCsv(String nombre, Map<T,T> datos) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombre))) {
+            for(Map.Entry<T,T> entry : datos.entrySet()){
+                bw.write(entry.getKey() + "\t" + entry.getValue());
+                bw.newLine();
+            }
+
+            bw.flush();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public static void crearDirectorio(String ruta) {
         Path file = Paths.get(ruta);

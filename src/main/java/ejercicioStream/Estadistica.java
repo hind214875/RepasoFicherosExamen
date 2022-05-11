@@ -8,6 +8,8 @@ package ejercicioStream;
 import ejercicio2.RegistroJSON;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -24,8 +26,13 @@ public class Estadistica {
         this.listaCalificacion = listaCalificacion;
     }
 
-    public ArrayList<Integer> getListaCalificacion(ArrayList<RegistroJSON> listaRegistros) {
-        return listaCalificacion;
+    public List<Integer> getListaCalificacion(ArrayList<RegistroJSON> listaRegistros,String inicial) {
+       List<Integer> notas=new ArrayList<>();
+       /*  notas=listaRegistros.stream()
+                            .filter(r->r.getcEAC().equals(inicial)|| r.geteA().equalsIgnoreCase(inicial)||r.getfOL().equals(inicial)||
+                                    r.getiNG().equals(inicial)||r.getoACV().equals(inicial)||r.gettC().equals(inicial)||r.gettII().equals(inicial))
+                            .collect(Collectors.toList());*/
+       return notas;
     }
 
     public void setListaCalificacion(ArrayList<Integer> listaCalificacion) {
@@ -40,7 +47,8 @@ public class Estadistica {
     private List<String> calificacionesporModelo(String inicial,ArrayList<RegistroJSON> lista){
         List<String> calificacion = null;
         
-        //calificacion = lista.stream();
+        //calificacion = lista.stream()
+                           
              
         
         return calificacion;
