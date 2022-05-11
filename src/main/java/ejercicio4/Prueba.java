@@ -3,20 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejercicio2;
+package ejercicio4;
 
-import java.util.ArrayList;
+import ejercicio1.LecturaCSV;
+import java.util.Map;
 
 /**
  *
  * @author hinda
  */
 public class Prueba {
-
     public static void main(String[] args) {
-        String idFichero = "calificacionesGrupo.Json";
-        String ruta = "./";
-        ArrayList<RegistroJSON> listaJson = LecturaJSON.LeerFicheroJson(idFichero, ruta);
-        listaJson.forEach(System.out::println);
+        
+        Map<String,String> mapDesdeFichero=LecturaCSV.LecturaCSV("nombresModulos.csv", "./");
+            // AlumnadoToCSV.escritura(alumnado, mapDesdeFichero);
+      
+   
+      
     }
 }

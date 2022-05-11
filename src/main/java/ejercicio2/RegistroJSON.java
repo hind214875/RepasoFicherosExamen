@@ -5,20 +5,31 @@
  */
 package ejercicio2;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  *
  * @author hinda
  */
 public class RegistroJSON {
+
+  
     private String alumnoA;
+    @JsonProperty("OACV")
     private String oACV;
+    @JsonProperty("EA")
     private String eA;
+    @JsonProperty("TII")
     private String tII;
+    @JsonProperty("TC")
     private String tC;
+    @JsonProperty("ING")
     private String iNG;
+    @JsonProperty("FOL")
     private String fOL;
+    @JsonProperty("CEAC")
     private String cEAC;
-    
+
     //constrector
     public RegistroJSON() {
     }
@@ -34,6 +45,7 @@ public class RegistroJSON {
         this.cEAC = cEAC;
     }
 
+     @JsonProperty("Alumno/a")
     public String getAlumnoA() {
         return alumnoA;
     }
@@ -98,14 +110,9 @@ public class RegistroJSON {
         this.cEAC = cEAC;
     }
 
-  
-
- 
-
     @Override
     public String toString() {
-        return alumnoA + ";" + oACV +  ";" + eA +  ";" + tII +  ";" + tC +  ";"+ iNG +  ";"+ fOL +  ";" + cEAC;
+        return alumnoA + ";" + oACV + ";" + eA + ";" + tII + ";" + tC + ";" + iNG + ";" + fOL + ";" + cEAC;
     }
 
-   
 }

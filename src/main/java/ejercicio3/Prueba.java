@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejercicio2;
+package ejercicio3;
 
+import ejercicio2.LecturaJSON;
+import ejercicio2.RegistroJSON;
 import java.util.ArrayList;
 
 /**
@@ -17,6 +19,8 @@ public class Prueba {
         String idFichero = "calificacionesGrupo.Json";
         String ruta = "./";
         ArrayList<RegistroJSON> listaJson = LecturaJSON.LeerFicheroJson(idFichero, ruta);
-        listaJson.forEach(System.out::println);
+        RegistrosToAlumnado.registrosToAlumnados(listaJson).forEach(System.out::println);
+        
+        
     }
 }

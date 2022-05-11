@@ -7,7 +7,6 @@ package ejercicio1;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -18,25 +17,33 @@ import java.util.TreeMap;
  */
 public class LecturaCSV {
 
-    public static ArrayList<Map<String, String>> LecturaCSV(String idFichero, String ruta) {
+    public static TreeMap<String, String> LecturaCSV(String idFichero, String ruta) {
         // Variables para guardar los datos que se van leyendo
         String[] tokens;
         String linea;
-        ArrayList<Map<String, String>> listaAux = new ArrayList<>();
+        TreeMap<String, String> mapaOrdenada = new TreeMap<>();
 
         System.out.println("Leyendo el fichero: " + idFichero);
-        try (Scanner datosFichero = new Scanner(new File(idFichero))) {
-            // Guarda la línea completa en un String
-            linea = datosFichero.nextLine();
-            // Se guarda en el array de String cada elemento de la
-            tokens = linea.split(";");
-            //crear objeto mapa
-            Map<String, String> mapa = new TreeMap<>();
-            
+        try (Scanner datosFichero = new Scanner(new File(ruta + idFichero))) {
+            while (datosFichero.hasNextLine()) {
+                // Guarda la línea completa en un String
+                linea = datosFichero.nextLine();
+                linea = linea.replaceAll(" ", "");//para quitar espacios en blanco
+                // Se guarda en el array de String cada elemento de la
+                tokens = linea.split(";");
+
+                String nombre = tokens[0];
+                String descripcion = tokens[1];
+                
+                if (!nombre.equals(" ") && !descripcion.equals(" ")) {
+                    mapaOrdenada.put(nombre, descripcion);
+                }
+
+            }
 
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
-        return listaAux;
+        return mapaOrdenada;
     }
 }
